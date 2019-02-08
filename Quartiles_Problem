@@ -2,44 +2,68 @@ package Statistics;
 
 import java.util.*;
 
-public class prob_3 {
+public class Quatiles {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
         
-        int n=sc.nextInt();
-        int arr[]=new int[n];
+//        int n=sc.nextInt();
+//        int arr[]=new int[n];
+//        
+//        for(int i=0;i<n;i++)
+//        {
+//        	arr[i]=sc.nextInt();
+//        	
+//        }
         
-        for(int i=0;i<n;i++)
-        {
-        	arr[i]=sc.nextInt();
-        	
-        }
-        
+        int arr[]= {3,7,8,5,12,14,21,15,18,14};
+        int n=10;
         
         Arrays.sort(arr);
-        double mean=0;
         
+        int X=getMedian(arr, 0, n-1);
+        int L=0;
+        int U=0;
+        
+        if(n%2!=0)
+        {
+        	
+        	L=getMedian(arr, 0, (n/2)-1);
+        	
+        	U=getMedian(arr, (n/2)+1,n-1);
+        }
+        
+        else
+        {
+        	L=getMedian(arr,0,(n/2)-1);
+        	
+        	U=getMedian(arr,n/2,n-1);
+        }
+        
+        System.out.println(L);
+        System.out.println(X);
+        System.out.println(U);
        
-        
+        sc.close();
 
 	}
 	
-	static double getMedian(int arr[],int start,int end)
+	static int getMedian(int arr[],int start,int end)
 	{
 		int n=end-start+1;
 		int val=n/2;
 		
-		double mean=0;
+		int mean=0;
 		
 		if(n%2==0)
-        	mean=((double)arr[val]+arr[val-1]/2);
+        	mean=((arr[start+val]+arr[start+val-1])/2);
         
         else
-        	mean=((double)arr[val]);
+        	mean=(arr[start+val]);
 		
 		return mean;
 	}
 
 }
+
